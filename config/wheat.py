@@ -1,0 +1,13 @@
+BLEND_FILE_NAME = "wheat_generator.blend"
+
+NODE_GROUP_NAME = "WheatGenerator_V.1.0"
+
+DEFAULT_COLLECTION_NAME = "WheatLibrary"
+
+DEFAULT_BASE_NAME = "Wheat"
+
+DEFAULT_COUNT = 10
+
+DEFAULT_START_SEED = 1
+
+DEFAULT_DENSITY = 0.1
