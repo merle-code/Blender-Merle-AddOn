@@ -1,0 +1,7 @@
+BLEND_FILE_NAME = "thunders_generator.blend"
+
+THUNDERBALL_NODE_GROUP_NAME = "ThunderBall_V.1.0"
+
+THUNDERBALL_DEFAULT_BALL_NAME = "ThunderBall"
+
+DEFAULT_SEED = 1

@@ -1,24 +1,4 @@
-import bpy
-
-from ..config import wheat
-
-
-def create_wheat(node_group):
-
-    bpy.ops.curve.primitive_bezier_curve_add()
-
-    obj = bpy.context.active_object
-
-    obj.name = wheat.DEFAULT_BASE_NAME
-
-    modifier = obj.modifiers.new(
-        name="GeometryNodes",
-        type='NODES'
-    )
-
-    modifier.node_group = node_group
-
-    return obj
+import bpy # type: ignore
 
 
 def duplicate_object(obj):
@@ -44,6 +24,7 @@ def remove_empty_material_slots(obj):
             obj.active_material_index = i
 
             bpy.ops.object.material_slot_remove()
+
 
 def convert_to_mesh(obj):
 

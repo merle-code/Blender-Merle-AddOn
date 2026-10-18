@@ -28,3 +28,11 @@ def validate_wheat_properties(props):
         )
     
     return None
+
+
+def validate_thunders_properties(props):
+
+    if not props.base_name.strip():
+        return "Base Name cannot be empty"
+    
+    return None

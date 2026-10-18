@@ -1,51 +1,27 @@
 import bpy # type: ignore
 from pathlib import Path
-
-from ..config import wheat # type: ignore
+import logging
 
 
 def get_assets_dir():
     return Path(__file__).parent.parent / "assets"
 
 
-def get_wheat_blend_file():
-    return get_assets_dir() / wheat.BLEND_FILE_NAME
+def get_blend_file(blend_file):
+    return get_assets_dir() / blend_file
 
 
-   
-def get_wheat_node_group():
-    import logging
+def append_node_group(
+            blend_file,
+            node_group_name
+        ):
 
-    logger = logging.getLogger(__name__)
+    ng = bpy.data.node_groups.get(
+        node_group_name
+    )
 
-
-
-    ng = bpy.data.node_groups.get(wheat.NODE_GROUP_NAME)
-
-    if ng is None:
-        blend_file = get_wheat_blend_file()
-        
-        if not blend_file.exists():
-            logger.error(
-                f"Asset file not found: {blend_file}"
-            )
-            logger.error(
-                f"Node Group: '{wheat.NODE_GROUP_NAME}' not loaded"
-            )
-            return None
-        ng = append_wheat_node_group(blend_file)
-    
-    return ng
-
-
-def append_wheat_node_group(blend_file):
-
-    if bpy.data.node_groups.get(
-        wheat.NODE_GROUP_NAME
-    ):
-        return bpy.data.node_groups[
-            wheat.NODE_GROUP_NAME
-        ]
+    if ng:
+        return ng
 
     directory = (
         str(blend_file)
@@ -54,9 +30,37 @@ def append_wheat_node_group(blend_file):
 
     bpy.ops.wm.append(
         directory=directory,
-        filename=wheat.NODE_GROUP_NAME
+        filename=node_group_name
     )
 
     return bpy.data.node_groups.get(
-        wheat.NODE_GROUP_NAME
+        node_group_name
+    )
+
+
+def get_then_append_node_group(
+            blend_file,
+            node_group_name
+        ):
+    logger = logging.getLogger(__name__)
+
+    ng = bpy.data.node_groups.get(
+        node_group_name
+    )
+
+    if ng:
+        return ng
+
+    if not blend_file.exists():
+        logger.error(
+            f"Asset file not found: {blend_file}"
+        )
+        logger.error(
+            f"Node Group '{node_group_name}' not loaded"
+        )
+        return None
+
+    return append_node_group(
+        blend_file,
+        node_group_name
     )

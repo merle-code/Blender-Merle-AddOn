@@ -6,21 +6,22 @@ from ..utils.validators import validate_wheat_properties
 from ..utils.blender_collections import (
     create_collection,
 )
-from ..utils.blender_assets import (
+from ..utils.blender_wheat_assets import (
     get_wheat_node_group,
 )
-from ..utils.blender_objects import (
+from ..utils.blender_wheat_objects import (
     create_wheat,
+)
+from ..utils.blender_objects import (
     duplicate_object,
     convert_to_mesh,
     remove_empty_material_slots,
     delete_object,
 )
+
 from ..utils.blender_gn import (
     set_gn_input,
 )
-
-from ..config import wheat
 
 GOLDEN_ANGLE = math.radians(137.507764)
 

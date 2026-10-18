@@ -2,14 +2,16 @@ import bpy # type: ignore
 
 from .. import bl_info
 
-def menu_func(self, context):
-    self.layout.menu(
-        "VIEW3D_MT_merle_add",
-        icon='PLUGIN'
+def draw_wheat_menu(layout, context):
+
+    layout.menu(
+        "VIEW3D_MT_merle_wheat",
+        icon='CURVE_DATA'
     )
 
-class VIEW3D_MT_merle_add(bpy.types.Menu):
-    bl_label = bl_info["name"]
+class VIEW3D_MT_merle_wheat(bpy.types.Menu):
+    bl_idname = "VIEW3D_MT_merle_wheat"
+    bl_label = "Wheats"
 
     def draw(self, context):
         layout = self.layout
