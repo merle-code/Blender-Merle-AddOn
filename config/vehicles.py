@@ -1,0 +1,5 @@
+BLEND_DIR_NAME = "vehicles"
+
+MENU_GROUP_NAME = "Vehicles"
+
+DEFAULT_ITEM_ICON = 'OBJECT_ORIGIN'

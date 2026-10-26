@@ -29,6 +29,17 @@ from .operators.thunderball_operator import (
 )
 from .properties.thunders_properties import ThundersProperties
 
+from .panels.vehicles_panel import (
+    VIEW3D_MT_merle_vehicles,
+)
+from .operators.vehicles_operator import (
+    CUSTOMADDON_OT_vehicle_add
+)
+
+from .utils.blender_icons import (
+    register_icons,
+    unregister_icons,
+)
 
 def menu_func(self, context):
     self.layout.menu(
@@ -53,22 +64,31 @@ class VIEW3D_MT_merle_add(bpy.types.Menu):
             icon='FORCE_VORTEX'
         )
 
+        layout.menu(
+            VIEW3D_MT_merle_vehicles.bl_idname,
+            icon='OBJECT_ORIGIN'
+        )
+
 classes = (
     CUSTOMADDON_PT_main,
     CUSTOMADDON_PT_wheat_create,
     CUSTOMADDON_PT_wheat_collection,
+    CUSTOMADDON_PT_thunderball,
     CUSTOMADDON_OT_wheat_collection,
     CUSTOMADDON_OT_wheat_create,
-    WheatProperties,
-    CUSTOMADDON_PT_thunderball,
     CUSTOMADDON_OT_thunderball_create,
+    CUSTOMADDON_OT_vehicle_add,
+    WheatProperties,
     ThundersProperties,
     VIEW3D_MT_merle_add,
     VIEW3D_MT_merle_wheat,
-    VIEW3D_MT_merle_thunders
+    VIEW3D_MT_merle_thunders,
+    VIEW3D_MT_merle_vehicles
 )
 
 def register():
+    register_icons()
+
     for cls in classes:
         bpy.utils.register_class(cls)
 
@@ -94,3 +114,5 @@ def unregister():
 
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
+
+    unregister_icons()
