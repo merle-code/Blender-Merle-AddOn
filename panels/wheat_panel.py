@@ -28,14 +28,14 @@ class VIEW3D_MT_merle_wheat(bpy.types.Menu):
             icon='MESH_DATA'
         ).convert_to_mesh = True
 
-class CUSTOMADDON_PT_wheat_create(bpy.types.Panel):
+class MCA_PT_wheat_create(bpy.types.Panel):
     bl_label = "Wheat Create"
-    bl_idname = "CUSTOMADDON_PT_wheat_create"
+    bl_idname = "MCA_PT_wheat_create"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Custom"
     bl_options = {'DEFAULT_CLOSED'}
-    bl_parent_id = "CUSTOMADDON_PT_main"
+    bl_parent_id = "MCA_PT_main"
     bl_order = 5
 
     def draw(self, context):
@@ -56,14 +56,14 @@ class CUSTOMADDON_PT_wheat_create(bpy.types.Panel):
             text="Create"
         )
 
-class CUSTOMADDON_PT_wheat_collection(bpy.types.Panel):
+class MCA_PT_wheat_collection(bpy.types.Panel):
     bl_label = "Wheat Collection Generator"
-    bl_idname = "CUSTOMADDON_PT_wheat_collection"
+    bl_idname = "MCA_PT_wheat_collection"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
     bl_category = "Custom"
     bl_options = {'DEFAULT_CLOSED'}
-    bl_parent_id = "CUSTOMADDON_PT_main"
+    bl_parent_id = "MCA_PT_main"
     bl_order = 10
 
     def draw(self, context):

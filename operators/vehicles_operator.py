@@ -3,7 +3,7 @@ from pathlib import Path
 
 from ..config import vehicles
 
-class CUSTOMADDON_OT_vehicle_add(bpy.types.Operator):
+class MCA_OT_vehicle_add(bpy.types.Operator):
     bl_idname = "customaddon.vehicle_add"
     bl_label = "Add Vehicle"
 
