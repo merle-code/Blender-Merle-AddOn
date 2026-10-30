@@ -25,7 +25,7 @@ from ..utils.blender_gn import (
 
 GOLDEN_ANGLE = math.radians(137.507764)
 
-class CUSTOMADDON_OT_wheat_create(bpy.types.Operator):
+class MCA_OT_wheat_create(bpy.types.Operator):
     bl_idname = "customaddon.wheat_create"
     bl_label = "Create Wheat"
 
@@ -59,7 +59,7 @@ class CUSTOMADDON_OT_wheat_create(bpy.types.Operator):
         return {'FINISHED'}
 
 
-class CUSTOMADDON_OT_wheat_collection(bpy.types.Operator):
+class MCA_OT_wheat_collection(bpy.types.Operator):
     bl_idname = "customaddon.wheat_collection"
     bl_label = "Generate Wheat"
 

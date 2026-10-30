@@ -8,24 +8,24 @@ bl_info = {
     "category": "3D View",
 }
 
-from .panels.main_panel import CUSTOMADDON_PT_main
+from .panels.main_panel import MCA_PT_main
 from .panels.wheat_panel import (
-    CUSTOMADDON_PT_wheat_collection,
-    CUSTOMADDON_PT_wheat_create,
+    MCA_PT_wheat_collection,
+    MCA_PT_wheat_create,
     VIEW3D_MT_merle_wheat,
 )
 from .operators.wheat_operator import (
-    CUSTOMADDON_OT_wheat_collection,
-    CUSTOMADDON_OT_wheat_create,
+    MCA_OT_wheat_collection,
+    MCA_OT_wheat_create,
 )
 from .properties.wheat_properties import WheatProperties
 
 from .panels.thunders_panel import (
-    CUSTOMADDON_PT_thunderball,
+    MCA_PT_thunderball,
     VIEW3D_MT_merle_thunders,
 )
 from .operators.thunderball_operator import (
-    CUSTOMADDON_OT_thunderball_create,
+    MCA_OT_thunderball_create,
 )
 from .properties.thunders_properties import ThundersProperties
 
@@ -33,7 +33,17 @@ from .panels.vehicles_panel import (
     VIEW3D_MT_merle_vehicles,
 )
 from .operators.vehicles_operator import (
-    CUSTOMADDON_OT_vehicle_add
+    MCA_OT_vehicle_add
+)
+
+from .properties.diagnostics_properties import DiagnosticsProperties
+
+from .modules.diagnostics.diagnostics_panel import (
+    MCA_PT_diagnostics,
+)
+
+from .modules.diagnostics.diagnostics_operator import (
+    MCA_OT_diagnostics_scan,
 )
 
 from .utils.blender_icons import (
@@ -70,20 +80,23 @@ class VIEW3D_MT_merle_add(bpy.types.Menu):
         )
 
 classes = (
-    CUSTOMADDON_PT_main,
-    CUSTOMADDON_PT_wheat_create,
-    CUSTOMADDON_PT_wheat_collection,
-    CUSTOMADDON_PT_thunderball,
-    CUSTOMADDON_OT_wheat_collection,
-    CUSTOMADDON_OT_wheat_create,
-    CUSTOMADDON_OT_thunderball_create,
-    CUSTOMADDON_OT_vehicle_add,
+    MCA_PT_main,
+    MCA_PT_wheat_create,
+    MCA_PT_wheat_collection,
+    MCA_PT_thunderball,
+    MCA_OT_wheat_collection,
+    MCA_OT_wheat_create,
+    MCA_OT_thunderball_create,
+    MCA_OT_vehicle_add,
     WheatProperties,
     ThundersProperties,
+    DiagnosticsProperties,
     VIEW3D_MT_merle_add,
     VIEW3D_MT_merle_wheat,
     VIEW3D_MT_merle_thunders,
-    VIEW3D_MT_merle_vehicles
+    VIEW3D_MT_merle_vehicles,
+    MCA_PT_diagnostics,
+    MCA_OT_diagnostics_scan,
 )
 
 def register():
@@ -100,6 +113,10 @@ def register():
         type=ThundersProperties
     )
 
+    bpy.types.Scene.mca_diagnostics = bpy.props.PointerProperty(
+        type=DiagnosticsProperties
+    )
+
     bpy.types.VIEW3D_MT_add.append(
         menu_func
     )
@@ -109,6 +126,7 @@ def unregister():
         menu_func
     )
 
+    del bpy.types.Scene.mca_diagnostics
     del bpy.types.Scene.wheat_props
     del bpy.types.Scene.thunders_props
 

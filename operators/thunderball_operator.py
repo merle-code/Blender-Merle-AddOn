@@ -17,7 +17,7 @@ from ..utils.blender_gn import (
     set_gn_input,
 )
 
-class CUSTOMADDON_OT_thunderball_create(bpy.types.Operator):
+class MCA_OT_thunderball_create(bpy.types.Operator):
     bl_idname = "customaddon.thunderball_create"
     bl_label = "Create ThunderBall"
 
